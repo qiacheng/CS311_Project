@@ -6,15 +6,15 @@ using namespace std;
 
 //prototypes
 bool check_floating_string(string &inputStr);
-bool initialSignState(char strArray[], int strLength, int strPosition);
-bool dotStateAfterInitialSign(char strArray[], int strLength, int strPosition);
-bool initialState(char strArray[], int strLength, int strPosition);
-bool q1State(char strArray[], int strLength, int strPosition);
-bool q2State(char strArray[], int strLength, int strPosition);
-bool q3State(char strArray[], int strLength, int strPosition);
-bool dotState(char strArray[], int strLength, int strPosition);
-bool eState(char strArray[], int strLength, int strPosition);
-bool signStateAfterEstate(char strArray[], int strLength, int strPosition);
+bool initialSignState(const char strArray[], int strLength, int strPosition);
+bool dotStateAfterInitialSign(const char strArray[], int strLength, int strPosition);
+bool initialState(const char strArray[], int strLength, int strPosition);
+bool q1State(const char strArray[], int strLength, int strPosition);
+bool q2State(const char strArray[], int strLength, int strPosition);
+bool q3State(const char strArray[], int strLength, int strPosition);
+bool dotState(const char strArray[], int strLength, int strPosition);
+bool eState(const char strArray[], int strLength, int strPosition);
+bool signStateAfterEstate(const char strArray[], int strLength, int strPosition);
 bool acceptState(){return true;};
 bool deadState(){return false;};
 
@@ -55,7 +55,7 @@ bool check_floating_string(string &inputStr){
 }
 
 //initial State
-bool initialState(char strArray[], int strLength, int strPosition){
+bool initialState(const char strArray[], int strLength, int strPosition){
     //convert string to ASCII value
     //current ASCII value
     int strASCII= int(strArray[strPosition]);
@@ -79,7 +79,7 @@ bool initialState(char strArray[], int strLength, int strPosition){
     return false;
 }
 
-bool initialSignState(char strArray[], int strLength, int strPosition){
+bool initialSignState(const char strArray[], int strLength, int strPosition){
     //end of string, halt and accept
     if (strPosition == strLength)
         return deadState();
@@ -106,7 +106,7 @@ bool initialSignState(char strArray[], int strLength, int strPosition){
     }
 }
 
-bool q1State(char strArray[], int strLength, int strPosition){
+bool q1State(const char strArray[], int strLength, int strPosition){
 
     //end of string, halt and accept
     if (strPosition == strLength)
@@ -140,7 +140,7 @@ bool q1State(char strArray[], int strLength, int strPosition){
     }
 }
 
-bool q2State(char strArray[], int strLength, int strPosition){
+bool q2State(const char strArray[], int strLength, int strPosition){
     //end of string, halt and accept
     if (strPosition == strLength)
         return acceptState();
@@ -168,7 +168,7 @@ bool q2State(char strArray[], int strLength, int strPosition){
     }
 }
 
-bool q3State(char strArray[], int strLength, int strPosition){
+bool q3State(const char strArray[], int strLength, int strPosition){
     //end of string, halt and accept
     if (strPosition == strLength)
         return acceptState();
@@ -191,7 +191,7 @@ bool q3State(char strArray[], int strLength, int strPosition){
     }
 }
 
-bool dotState(char strArray[], int strLength, int strPosition){
+bool dotState(const char strArray[], int strLength, int strPosition){
     //end of string, halt and accept
     if (strPosition == strLength)
         return acceptState();
@@ -219,7 +219,7 @@ bool dotState(char strArray[], int strLength, int strPosition){
     }
 }
 
-bool dotStateAfterInitialSign(char strArray[], int strLength, int strPosition){
+bool dotStateAfterInitialSign(const char strArray[], int strLength, int strPosition){
     //end of string, halt and accept
     if (strPosition == strLength)
         return acceptState();
@@ -247,7 +247,7 @@ bool dotStateAfterInitialSign(char strArray[], int strLength, int strPosition){
     }
 }
 
-bool eState(char strArray[], int strLength, int strPosition){
+bool eState(const char strArray[], int strLength, int strPosition){
     //end of string, halt and go dead because ends with e
     if (strPosition == strLength)
         return deadState();
@@ -273,7 +273,7 @@ bool eState(char strArray[], int strLength, int strPosition){
     }
 }
 
-bool signStateAfterEstate(char strArray[], int strLength, int strPosition){
+bool signStateAfterEstate(const char strArray[], int strLength, int strPosition){
     //end of string, halt and accept
     if (strPosition == strLength)
         return deadState();
