@@ -18,11 +18,16 @@ bool signStateAfterEstate(const char strArray[], int strLength, int strPosition)
 bool acceptState(){return true;};
 bool deadState(){return false;};
 
-int main() {
+int main(int argc, char **argv) {
     ifstream inFile;
-    inFile.open("floating.txt");
-    //check if file exists
 
+    if(argc > 1) {
+        inFile.open(argv[1]);
+        //check if file exists
+    }
+    else{
+        cout << "Need an input file as an argument" << endl;
+    }
     if(!inFile){
         cout << "File not exist" << endl;
         return 0;
